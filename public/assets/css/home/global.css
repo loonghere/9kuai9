@@ -1,0 +1,37 @@
+@charset "utf-8";
+textarea,input[type="text"],input[type="password"]{ background:url(/assets/images/global/input_bg_sd.png) no-repeat #FFF; font-family:'Microsoft Yahei',Tahoma,Helvetica,Arial,sans-serif;}
+:-moz-placeholder, ::-webkit-input-placeholder { color:#999999; }
+.placeholder { color:#999999; }
+
+/*this is main*/
+.main{ margin: 20px auto 0; overflow:hidden; min-height: 550px; _height: 550px;}
+.head{ position:relative; width:100%; height:150px;background: url(/assets/images/global/top_bg.gif) repeat-x right top; }
+.head .logo{ position:relative; height:110px; margin:0 auto;}
+.head .logo h1{ position:absolute; top:45px; left:0; }
+.head .search_box{ position:absolute; top:50px; right:0; height:36px; line-height:36px; }
+.head .search_box .text{ float:left; width:300px; height:20px; line-height:20px; padding:8px; background:#fff; border:0; color:#aaa; overflow:hidden; }
+.head .search_box button,.head .search_box button:hover{background:url(/assets/images/global/search_new.png) no-repeat}
+.head .search_box button { float:left; width:60px; height:36px; border:0; font-weight:bold; cursor:pointer; color:#fff; background-color:#e13d01; text-indent:-9999px; outline:0; }
+.head .search_box .btn{ background-position:0 0 }
+.head .search_box .btn:hover { background-position:0 -36px }
+.head .search_box .btn2{ background-position:-60px 0 }
+.head .search_box .btn2:hover { background-position:-60px -36px }
+
+.head .nav{ margin:0 auto; }
+.navigation { float:left; height:40px; line-height:40px; }
+.navigation li { float:left; height:40px; background:url(/assets/images/global/line_cur.png) no-repeat right; position: relative;}
+.navigation li.current { padding-right:2px; }
+.navigation li a { float:left; padding:2px 25px; color:#FFF; font:bold 15px/36px Tahoma,Helvetica,Arial,'微软雅黑',sans-serif; text-align:center; }
+.navigation li a:hover{text-decoration:underline;}
+.navigation li a:hover { background:#fff; color: #ff6600; font-size:15px; }
+
+.navigation li.current a,.navigation li.current a:hover { background:#fff; color: #ff6600; font-size:15px; }
+.navigation li a img{ position: absolute; top:-5px; right:0; }
+
+/*foot start*/
+.foot{ margin:0 auto; border-top:1px solid #e8e8e8 ;background:#fff;}
+.foot .white_bg{ padding:10px 0px; margin:0 auto; overflow:visible; z-index:100;}
+
+.foot .f_miibeian{ padding-bottom:10px; background:#fff; color:#c6c6c6; text-align:center; font-size:12px; }
+.foot .f_miibeian a{ color:#c6c6c6; text-decoration:none;}
+.foot .f_miibeian a:hover{ text-decoration: underline;}

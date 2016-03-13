@@ -5,7 +5,8 @@
  * 王雷 loonghere@qq.com
  * 2016-3-4 17:23:15
  */
-class TaoBao
+namespace App\Common;
+class Taobao
 {
     public function __construct() {}
 
@@ -21,13 +22,7 @@ class TaoBao
             $shopUrl = "http://detail.m.tmall.com/item.htm?id=" . $param['id'];
         }
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $shopUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION,true);
-        curl_setopt($ch, CURLOPT_MAXREDIRS,2);
-        $file_contents = curl_exec($ch);
-        curl_close($ch);
+        $file_contents = $this->httpRequest($shopUrl);
         if (!$file_contents) {
             $file_contents = file_get_contents($shopUrl);
         }
@@ -36,8 +31,23 @@ class TaoBao
         } else {
             $data = $this->getTmallShopInfo($file_contents);
         }
-        $data['num_iid'] = $param['id'];
+        $data['item_id'] = $param['id'];
+        $coupon_rate = (string)($data['coupon_price'] / $data['price']);
+        $coupon_rate = substr($coupon_rate, 0,4);
+        $data['coupon_rate'] = $coupon_rate * 10000;
         return $data;
+    }
+
+    public function httpRequest($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION,true);
+        curl_setopt($ch, CURLOPT_MAXREDIRS,2);
+        $file_contents = curl_exec($ch);
+        curl_close($ch);
+        return $file_contents;
     }
 
     public function getTaobaoShopInfo($content)
@@ -105,6 +115,6 @@ class TaoBao
 }
 
 // 用法如下
-// $taobao = new TaoBao;
+// $taobao = new Taobao;
 // $data = $taobao->getInfo('https://detail.tmall.com/item.htm?id=42951581774');
 // var_dump($data);
